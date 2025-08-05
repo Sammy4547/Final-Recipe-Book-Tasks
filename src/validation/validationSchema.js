@@ -7,16 +7,22 @@ export const Step1Schema=Yup.object().shape({
     description:Yup.string().required("description is required")
 })
 
-export const Step2Schema=Yup.object().shape({
-    indegridentName:Yup.string().required("RecipeName is required"),
-    quantity:Yup.string().required("quantity is required")
-   
-})
+export const Step2Schema = Yup.object().shape({
+  ingredients: Yup.array()
+    .of(
+      Yup.object().shape({
+        name: Yup.string().required("Ingredient name is required"),
+        quantity: Yup.string().required("Quantity is required"),
+      })
+    )
+    .min(1, "At least one ingredient is required")
+});
 
-export const Step3Schema=Yup.object().shape({
-    cookingStep:Yup.string().required("cookingstep is required"),
-  
-})
+
+export const Step3Schema = Yup.object().shape({
+  cookingstep: Yup.string().required("cookingstep is required"),
+});
+
 
 export const Step4Schema=Yup.object().shape({
     img:Yup.string().required("image is required"),

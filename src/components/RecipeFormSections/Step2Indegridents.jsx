@@ -1,142 +1,110 @@
-import React, { useState } from "react";
+import React from "react";
 import { useFormik } from "formik";
-import TextField from "../TextFiled";
 import { Step2Schema } from "../../validation/validationSchema";
+import TextField from "../TextFiled";
 
-export default function Step2Ingredients({ onPrev, onNext }) {
-  const [ingredients, setIngredients] = useState([]);
-  const [editIndex, setEditIndex] = useState(null);
-
+export default function IngredientForm({ onNext, onPrev, initialValues }) {
   const formik = useFormik({
-    initialValues: {
-      ingredientName: "",
-      quantity: "",
-    },
-    validationSchema: Step2Schema,
-    onSubmit: (values) => {
-      const newIngredient = {
-        id: Date.now(),
-        ingredientName: values.ingredientName,
-        quantity: values.quantity,
-      };
+  initialValues: initialValues && initialValues.ingredients
+    ? initialValues
+    : { ingredients: [{ name: "", quantity: "" }] },
+  enableReinitialize: true,
+  validationSchema: Step2Schema,
+  onSubmit: (values) => {
+    onNext(values);
+  },
+});
 
-      if (editIndex !== null) {
-        const updated = [...ingredients];
-        updated[editIndex] = { ...newIngredient, id: ingredients[editIndex].id };
-        setIngredients(updated);
-        setEditIndex(null);
-      } else {
-        setIngredients([...ingredients, newIngredient]);
-      }
 
-      formik.resetForm();
-    },
-  });
-
-  const handleEdit = (index) => {
-    const ingredient = ingredients[index];
-    formik.setValues({
-      ingredientName: ingredient.ingredientName,
-      quantity: ingredient.quantity,
-    });
-    setEditIndex(index);
+  const handleChange = (index, e) => {
+    const { name, value } = e.target;
+    const updated = [...formik.values.ingredients];
+    updated[index][name] = value;
+    formik.setFieldValue("ingredients", updated);
   };
 
-  const handleDelete = (index) => {
-    const updated = ingredients.filter((_, i) => i !== index);
-    setIngredients(updated);
-    if (editIndex === index) {
-      formik.resetForm();
-      setEditIndex(null);
-    }
+  const handleAdd = () => {
+    const updated = [...formik.values.ingredients, { name: "", quantity: "" }];
+    formik.setFieldValue("ingredients", updated);
+  };
+
+  const handleRemove = (index) => {
+    const updated = [...formik.values.ingredients];
+    updated.splice(index, 1);
+    formik.setFieldValue("ingredients", updated);
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <form
-        className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg"
-        onSubmit={formik.handleSubmit}
-      >
-        <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
-          Add Ingredients
-        </h2>
+    <form
+      onSubmit={formik.handleSubmit}
+      className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-md"
+    >
+      <h2 className="text-2xl font-semibold mb-4 text-center">
+        Step 2: Ingredients
+      </h2>
 
-        {/* Ingredient Name */}
-        <TextField
-          label="Ingredient Name"
-          name="ingredientName"
-          value={formik.values.ingredientName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.ingredientName && formik.errors.ingredientName}
-        />
+      {formik.values.ingredients.map((ing, index) => (
+        <div key={index} className="flex gap-2 mb-4">
+          <TextField
+            label="Ingredient"
+            name="name"
+            value={ing.name}
+            onChange={(e) => handleChange(index, e)}
+            touched={formik.touched.ingredients?.[index]?.name}
+            error={formik.errors.ingredients?.[index]?.name}
+            placeholder="e.g., Banana"
+          />
 
-        {/* Quantity */}
-        <TextField
-          label="Quantity"
-          name="quantity"
-          value={formik.values.quantity}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.quantity && formik.errors.quantity}
-        />
+          <TextField
+            label="Quantity"
+            name="quantity"
+            value={ing.quantity}
+            onChange={(e) => handleChange(index, e)}
+            touched={formik.touched.ingredients?.[index]?.quantity}
+            error={formik.errors.ingredients?.[index]?.quantity}
+            placeholder="e.g., 1 cup"
+          />
 
-        {/* Add / Update Button */}
+          {formik.values.ingredients.length > 1 && (
+            <button
+              type="button"
+              onClick={() => handleRemove(index)}
+              className="text-red-500"
+            >
+              ✖
+            </button>
+          )}
+        </div>
+      ))}
+
+      {typeof formik.errors.ingredients === "string" && (
+        <p className="text-red-500">{formik.errors.ingredients}</p>
+      )}
+
+      <div className="flex justify-between mt-6">
         <button
-          type="submit"
-          className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded"
+          type="button"
+          onClick={onPrev}
+          className="bg-gray-400 text-white px-4 py-2 rounded"
         >
-          {editIndex !== null ? "Update Ingredient" : "Add Ingredient"}
+          Back
         </button>
 
-        {/* Display Ingredient List */}
-        {ingredients.length > 0 && (
-          <ul className="mt-6 divide-y divide-gray-200">
-            {ingredients.map((indg, index) => (
-              <li key={indg.id} className="py-2 flex justify-between items-center">
-                <div>
-                  <strong>{indg.ingredientName}</strong>: {indg.quantity}
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    type="button"
-                    className="text-blue-500 hover:underline"
-                    onClick={() => handleEdit(index)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    type="button"
-                    className="text-red-500 hover:underline"
-                    onClick={() => handleDelete(index)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+        <button
+          type="button"
+          onClick={handleAdd}
+          className="bg-green-700 text-white px-4 py-2 rounded"
+        >
+          + Add
+        </button>
 
-        {/* Navigation Buttons */}
-        <div className="flex justify-between mt-6">
-          <button
-            type="button"
-            onClick={onPrev}
-            className="bg-gray-300 px-4 py-2 rounded"
-          >
-            Back
-          </button>
-          <button
-            type="button"
-            onClick={() => onNext(ingredients)}
-            className="bg-green-500 text-white px-4 py-2 rounded"
-            disabled={ingredients.length === 0}
-          >
-            Next
-          </button>
-        </div>
-      </form>
-    </div>
+        <button
+          type="submit"
+          className="bg-green-600 text-white px-4 py-2 rounded"
+        >
+          Next
+        </button>
+      </div>
+    </form>
   );
 }

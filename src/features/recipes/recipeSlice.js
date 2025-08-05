@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
   step1:{
-    recipeName:'',
+    recipes:'',
     cusines:'',
     description:'',
   },
@@ -10,7 +10,7 @@ const initialState={
   indgridents:[]
   },
   step3:{
-    cookingsteps:''
+    cookingstep:null
   },
   step4:{
     img:''
@@ -28,7 +28,8 @@ export const recipeSlice=createSlice({
         state.step1={...state.step1,...action.payload}
     },
      updateStep2:(state,action)=>{
-        state.step2={...state.step2,...action.payload}
+        state.step2 = action.payload
+
     },
      updateStep3:(state,action)=>{
         state.step3={...state.step3,...action.payload}
