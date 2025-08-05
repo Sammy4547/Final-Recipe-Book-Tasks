@@ -110,6 +110,7 @@
       { "name": "Egg", "quantity": "1" },
       { "name": "Sugar", "quantity": "1 tbsp" }
     ],
+    
     "steps": [
       "Mix all ingredients into a smooth batter.",
       "Heat a non-stick pan and pour batter to form pancakes.",
