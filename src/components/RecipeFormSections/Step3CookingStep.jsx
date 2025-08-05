@@ -3,7 +3,7 @@ import TextField from "../TextFiled";
 import { useFormik } from "formik";
 import { Step3Schema } from "../../validation/validationSchema";
 
-export default function Step3CookingStep({ onNext, onPrev,initialValues }) {
+export default function Step3CookingStep({ onNext, onPrev, initialValues }) {
   const { handleBlur, handleChange, errors, handleSubmit, touched, values } =
     useFormik({
       initialValues: {
@@ -37,7 +37,13 @@ export default function Step3CookingStep({ onNext, onPrev,initialValues }) {
           textarea
         />
 
-       <button onClick={onPrev} type="button" className="  bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300 mt-4 space-x-3.5">Back</button>
+        <button
+          onClick={onPrev}
+          type="button"
+          className="  bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300 mt-4 space-x-3.5"
+        >
+          Back
+        </button>
         <button
           type="submit"
           className=" bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300 mt-4"

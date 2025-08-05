@@ -3,25 +3,19 @@ import { Step1Schema } from "../../validation/validationSchema";
 import TextField from "../TextFiled";
 
 export default function Step1RecipeDetails({ onNext, initialValues }) {
-  const {
-    handleBlur,
-    handleChange,
-    errors,
-    handleSubmit,
-    touched,
-    values,
-  } = useFormik({
-    initialValues: {
-      recipes: initialValues?.recipes || "",
-      cusines: initialValues?.cusines || "",
-      description: initialValues?.description || "",
-    },
-    enableReinitialize: true,
-    validationSchema: Step1Schema,
-    onSubmit: (values) => {
-      onNext(values); 
-    },
-  });
+  const { handleBlur, handleChange, errors, handleSubmit, touched, values } =
+    useFormik({
+      initialValues: {
+        recipes: initialValues?.recipes || "",
+        cusines: initialValues?.cusines || "",
+        description: initialValues?.description || "",
+      },
+      enableReinitialize: true,
+      validationSchema: Step1Schema,
+      onSubmit: (values) => {
+        onNext(values);
+      },
+    });
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">

@@ -5,16 +5,16 @@ import TextField from "../TextFiled";
 
 export default function IngredientForm({ onNext, onPrev, initialValues }) {
   const formik = useFormik({
-  initialValues: initialValues && initialValues.ingredients
-    ? initialValues
-    : { ingredients: [{ name: "", quantity: "" }] },
-  enableReinitialize: true,
-  validationSchema: Step2Schema,
-  onSubmit: (values) => {
-    onNext(values);
-  },
-});
-
+    initialValues:
+      initialValues && initialValues.ingredients
+        ? initialValues
+        : { ingredients: [{ name: "", quantity: "" }] },
+    enableReinitialize: true,
+    validationSchema: Step2Schema,
+    onSubmit: (values) => {
+      onNext(values);
+    },
+  });
 
   const handleChange = (index, e) => {
     const { name, value } = e.target;
