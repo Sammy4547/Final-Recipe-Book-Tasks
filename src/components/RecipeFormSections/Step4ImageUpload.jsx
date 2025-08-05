@@ -1,9 +1,14 @@
 import React from "react";
-import TextField from "../TextFiled";
 import { useFormik } from "formik";
 import { Step4Schema } from "../../validation/validationSchema";
+import { useDispatch } from "react-redux";
+import { resetRecipe, savedRecipe } from "../../features/recipes/recipeSlice";
+import { useNavigate } from "react-router-dom";
+export default function Step4ImageUpload({ onPrev,onNext, initialValues }) {
 
-export default function Step4ImageUpload({ onPrev, onNext, initialValues }) {
+  const navigate=useNavigate()
+  const dispatch=useDispatch()
+  
   const {
     handleSubmit,
     errors,
@@ -17,7 +22,10 @@ export default function Step4ImageUpload({ onPrev, onNext, initialValues }) {
     enableReinitialize: true,
     validationSchema: Step4Schema,
     onSubmit: (values) => {
-      onNext(values);
+     onNext(values)
+     dispatch(savedRecipe())      
+    dispatch(resetRecipe())
+    navigate('/')
     },
   });
 
@@ -32,7 +40,7 @@ export default function Step4ImageUpload({ onPrev, onNext, initialValues }) {
             const file = event.currentTarget.files[0];
             const reader = new FileReader();
             reader.onloadend = () => {
-              setFieldValue("img", reader.result); // base64 string
+              setFieldValue("img", reader.result); 
             };
             if (file) {
               reader.readAsDataURL(file);

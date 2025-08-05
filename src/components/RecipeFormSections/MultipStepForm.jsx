@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   goToNextStep,
@@ -5,23 +6,31 @@ import {
   updateStep1,
   updateStep2,
   updateStep3,
-  updateStep4
+  updateStep4,
+  savedRecipe,
 } from "../../features/recipes/recipeSlice";
 import Step1RecipeDetails from "./Step1RecipeDetails";
 import Step2Ingredients from "./Step2Indegridents";
 import Step3Instructions from "./Step3CookingStep";
-import Step4ImageUpload from "./Step4ImageUpload"
+import Step4ImageUpload from "./Step4ImageUpload";
+import useLocalStorage from "../../lib/useLoacalStorage";
 export default function MultiStepForm() {
   const dispatch = useDispatch();
 
-
-
   const currentStep = useSelector((state) => state.recipesForm.currentStep);
-    const step1Data = useSelector((state) => state.recipesForm.step1);
-
+  const step1Data = useSelector((state) => state.recipesForm.step1);
   const step2Data = useSelector((state) => state.recipesForm.step2);
   const step3Data = useSelector((state) => state.recipesForm.step3);
-  const step4Data=useSelector((state)=>state.recipesForm.step4)
+  const step4Data = useSelector((state) => state.recipesForm.step4);
+
+  const [finalRecipe, setFinalRecipe] = useLocalStorage("finalRecipe", {});
+const recipeComplete = useSelector((state) => state.recipesForm.finalRecipe);
+
+useEffect(() => {
+  if (recipeComplete&& Object.keys(recipeComplete).length > 0) {
+    setFinalRecipe(recipeComplete);
+  }
+}, [recipeComplete]);
 
   const steps = [
     "1. Recipe Details",
@@ -30,59 +39,58 @@ export default function MultiStepForm() {
     "4. Image Upload",
   ];
 
-  
-
   const handlePrev = () => {
     dispatch(goToPrevStep());
   };
-const renderStep = () => {
-  switch (currentStep) {
-    case 1:
-      return (
-        <Step1RecipeDetails
-          initialValues={step1Data}
-          onNext={(data) => {
-            dispatch(updateStep1(data));
-            dispatch(goToNextStep());
-          }}
-        />
-      );
-    case 2:
-      return (
-        <Step2Ingredients
-          initialValues={step2Data}
-          onPrev={handlePrev}
-          onNext={(data) => {
-            dispatch(updateStep2(data));
-            dispatch(goToNextStep());
-          }}
-        />
-      );
-    case 3:
-      return (
-        <Step3Instructions
-          initialValues={step3Data}
-          onPrev={handlePrev}
-          onNext={(data) => {
-            dispatch(updateStep3(data));
-            dispatch(goToNextStep());
-          }}
-        />
-      );
-    case 4:
-      return (
-        <Step4ImageUpload
-          initialValues={step4Data}
-          onPrev={handlePrev}
-          onNext={(data) => {
-            dispatch(updateStep4(data));
-          }}
-        />
-      );
-    default:
-      return null;
-  }
-};
+  const renderStep = () => {
+    switch (currentStep) {
+      case 1:
+        return (
+          <Step1RecipeDetails
+            initialValues={step1Data}
+            onNext={(data) => {
+              dispatch(updateStep1(data));
+              dispatch(goToNextStep());
+            }}
+          />
+        );
+      case 2:
+        return (
+          <Step2Ingredients
+            initialValues={step2Data}
+            onPrev={handlePrev}
+            onNext={(data) => {
+              dispatch(updateStep2(data));
+              dispatch(goToNextStep());
+            }}
+          />
+        );
+      case 3:
+        return (
+          <Step3Instructions
+            initialValues={step3Data}
+            onPrev={handlePrev}
+            onNext={(data) => {
+              dispatch(updateStep3(data));
+              dispatch(goToNextStep());
+            }}
+          />
+        );
+      case 4:
+        return (
+          <Step4ImageUpload
+            initialValues={step4Data}
+            onPrev={handlePrev}
+            onNext={(data) => {
+              dispatch(updateStep4(data));
+              dispatch(savedRecipe());
+            }}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="max-w-3xl mx-auto p-6">
@@ -121,7 +129,7 @@ const renderStep = () => {
 
       {/* Step Container */}
       <div className="bg-white shadow-xl rounded-2xl p-6 border border-gray-100 transition-all">
-      { renderStep()}
+        {renderStep()}
       </div>
     </div>
   );
