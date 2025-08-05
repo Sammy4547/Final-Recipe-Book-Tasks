@@ -1,0 +1,121 @@
+[
+  {
+    "id": "1",
+    "title": "Spaghetti Aglio e Olio",
+    "description": "A simple and delicious Italian pasta made with garlic and olive oil.",
+    "cuisine": "Italian",
+    "difficulty": "Easy",
+    "mealType": "Dinner",
+    "dietaryPreference": "Vegetarian",
+    "ingredients": [
+      { "name": "Spaghetti", "quantity": "200g" },
+      { "name": "Garlic", "quantity": "4 cloves" },
+      { "name": "Olive Oil", "quantity": "3 tbsp" },
+      { "name": "Chili Flakes", "quantity": "1 tsp" },
+      { "name": "Parsley", "quantity": "2 tbsp" },
+      { "name": "Salt", "quantity": "to taste" }
+    ],
+    "steps": [
+      "Boil the spaghetti in salted water until al dente.",
+      "Heat olive oil in a pan, sauté garlic and chili flakes.",
+      "Add cooked spaghetti, mix well with oil.",
+      "Garnish with parsley and serve hot."
+    ],
+    "image": "https://cdn.loveandlemons.com/wp-content/uploads/2020/03/spaghetti-aglio-e-olio.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Vegetable Fried Rice",
+    "description": "Quick and flavorful Chinese fried rice with vegetables.",
+    "cuisine": "Chinese",
+    "difficulty": "Medium",
+    "mealType": "Lunch",
+    "dietaryPreference": "Vegan",
+    "ingredients": [
+      { "name": "Cooked Rice", "quantity": "2 cups" },
+      { "name": "Carrots", "quantity": "1/2 cup (diced)" },
+      { "name": "Beans", "quantity": "1/4 cup (chopped)" },
+      { "name": "Spring Onion", "quantity": "1/4 cup (chopped)" },
+      { "name": "Soy Sauce", "quantity": "2 tbsp" },
+      { "name": "Oil", "quantity": "2 tbsp" }
+    ],
+    "steps": [
+      "Heat oil in a wok and sauté the vegetables.",
+      "Add cooked rice and mix well.",
+      "Pour in soy sauce and stir-fry for 2 minutes.",
+      "Serve hot with optional chili sauce."
+    ],
+    "image": "https://shwetainthekitchen.com/wp-content/uploads/2023/06/veg-fried-rice.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Chickpea Salad",
+    "description": "A fresh and protein-rich salad made with chickpeas and vegetables.",
+    "cuisine": "Mediterranean",
+    "difficulty": "Easy",
+    "mealType": "Snack",
+    "dietaryPreference": "Vegan",
+    "ingredients": [
+      { "name": "Chickpeas", "quantity": "1 cup (boiled)" },
+      { "name": "Cucumber", "quantity": "1/2 cup (diced)" },
+      { "name": "Tomato", "quantity": "1/2 cup (diced)" },
+      { "name": "Onion", "quantity": "1/4 cup (chopped)" },
+      { "name": "Lemon Juice", "quantity": "2 tbsp" },
+      { "name": "Salt", "quantity": "to taste" }
+    ],
+    "steps": [
+      "Combine all vegetables and chickpeas in a bowl.",
+      "Add lemon juice and salt, and toss well.",
+      "Chill for 10 minutes before serving."
+    ],
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAaxLv_dXaeNHZ5cZG9vciOmJ7UEP1mi4oxg&s"
+  },
+  {
+    "id": "4",
+    "title": "Paneer Butter Masala",
+    "description": "A rich and creamy North Indian curry made with paneer.",
+    "cuisine": "Indian",
+    "difficulty": "Hard",
+    "mealType": "Dinner",
+    "dietaryPreference": "Vegetarian",
+    "ingredients": [
+      { "name": "Paneer", "quantity": "200g" },
+      { "name": "Butter", "quantity": "2 tbsp" },
+      { "name": "Tomato Puree", "quantity": "1 cup" },
+      { "name": "Cream", "quantity": "1/2 cup" },
+      { "name": "Garam Masala", "quantity": "1 tsp" },
+      { "name": "Salt", "quantity": "to taste" }
+    ],
+    "steps": [
+      "Heat butter in a pan and cook tomato puree until thick.",
+      "Add spices and paneer, cook for 5-6 minutes.",
+      "Stir in cream and simmer for 2 minutes.",
+      "Serve hot with naan or rice."
+    ],
+    "image": "https://www.indianhealthyrecipes.com/wp-content/uploads/2023/07/paneer-butter-masala-recipe.jpg"
+  },
+  {
+    "id": "5",
+    "title": "Banana Pancakes",
+    "description": "Fluffy pancakes made with ripe bananas and minimal ingredients.",
+    "cuisine": "American",
+    "difficulty": "Easy",
+    "mealType": "Breakfast",
+    "dietaryPreference": "Vegetarian",
+    "ingredients": [
+      { "name": "Banana", "quantity": "1 (mashed)" },
+      { "name": "Flour", "quantity": "1 cup" },
+      { "name": "Milk", "quantity": "1/2 cup" },
+      { "name": "Baking Powder", "quantity": "1 tsp" },
+      { "name": "Egg", "quantity": "1" },
+      { "name": "Sugar", "quantity": "1 tbsp" }
+    ],
+    "steps": [
+      "Mix all ingredients into a smooth batter.",
+      "Heat a non-stick pan and pour batter to form pancakes.",
+      "Cook both sides until golden brown.",
+      "Serve with honey or syrup."
+    ],
+    "image": "https://feelgoodfoodie.net/wp-content/uploads/2025/02/Banana-Pancakes-13.jpg"
+  }
+]

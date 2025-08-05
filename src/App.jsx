@@ -1,14 +1,12 @@
 import { useState } from 'react'
 
 import './App.css'
+import AppRoutes from './routes/AppRoutes'
 
 function App() {
 
   return (
-    <>
-      <h1>Hello world</h1>
-      <p className='underline font-bold'>Hello jis</p>
-    </>
+   <AppRoutes/>
   )
 }
 
