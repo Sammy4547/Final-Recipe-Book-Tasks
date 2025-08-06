@@ -1,12 +1,17 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {goToNextStep,goToPrevStep,updateStep1,updateStep2,updateStep3,updateStep4,savedRecipe,} from "../../features/recipes/recipeSlice";
+import {
+  goToNextStep, goToPrevStep, updateStep1,
+  updateStep2, updateStep3, updateStep4, savedRecipe,
+} from "../../features/recipes/recipeSlice";
 import Step1RecipeDetails from "./Step1RecipeDetails";
 import Step2Ingredients from "./Step2Indegridents";
 import Step3Instructions from "./Step3CookingStep";
 import Step4ImageUpload from "./Step4ImageUpload";
 import useLocalStorage from "../../lib/useLoacalStorage";
 import Stepper from "./Stepper";
+import { nanoid } from "nanoid";
+
 export default function MultiStepForm() {
   const dispatch = useDispatch();
 
@@ -15,23 +20,28 @@ export default function MultiStepForm() {
   const step2Data = useSelector((state) => state.recipesForm.step2);
   const step3Data = useSelector((state) => state.recipesForm.step3);
   const step4Data = useSelector((state) => state.recipesForm.step4);
-
-  const [finalRecipes, setFinalRecipes] = useLocalStorage("finalRecipe", {});
-  console.log("The recipe is ",finalRecipes);
-  
   const recipeComplete = useSelector((state) => state.recipesForm.finalRecipe);
 
-  useEffect(() => {
-    if (recipeComplete && Object.keys(recipeComplete).length > 0) {
-      setFinalRecipes(recipeComplete);
+  const [finalRecipes, setFinalRecipes] = useLocalStorage("finalRecipe", []);
+
+ useEffect(() => {
+  if (recipeComplete && Object.keys(recipeComplete).length > 0) {
+    const exists = finalRecipes.some(
+      (r) => r.recipes === recipeComplete.recipes
+    );
+
+    if (!exists) {
+      setFinalRecipes([
+        ...finalRecipes,
+        { ...recipeComplete, id: nanoid() },
+      ]);
     }
-  }, [recipeComplete]);
+  }
+}, [recipeComplete]);
 
- 
 
-  const handlePrev = () => {
-    dispatch(goToPrevStep());
-  };
+  const handlePrev = () => dispatch(goToPrevStep());
+
   const renderStep = () => {
     switch (currentStep) {
       case 1:
@@ -84,9 +94,7 @@ export default function MultiStepForm() {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
-      {/* Stepper */}
-     <Stepper/>
-
+      <Stepper />
       <div className="bg-white shadow-xl rounded-2xl p-6 border border-gray-100 transition-all">
         {renderStep()}
       </div>

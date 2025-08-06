@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { nanoid } from "nanoid";
 
 const initialState = {
   step1: {
@@ -48,7 +49,7 @@ export const recipeSlice = createSlice({
         ...state.step2,
         ...state.step3,
         ...state.step4,
-        id:Date.now()
+        id:nanoid()
       };
     },
     resetRecipe: (state) => {
