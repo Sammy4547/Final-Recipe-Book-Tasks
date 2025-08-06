@@ -11,7 +11,10 @@ export default function AppRoutes() {
         path:'/',
         element:<AppLayouts/>,
         children:[
-           
+            {
+                index:true,
+                element:<UserForm/>
+            },
             {
                 path:'recipes',
                 element:<Recipes/>

@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 
 export default function AppLayouts() {
   return (
-    <div className='bg-gray-900 dark:bg-gray-100'>
+    <div className='bg-neutral-700 dark:bg-gray-100'>
         <Navbar/>
         <Outlet/>
     </div>

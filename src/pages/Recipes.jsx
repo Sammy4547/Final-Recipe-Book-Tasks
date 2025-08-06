@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../lib/usefetch'
-
+import { useNavigate } from 'react-router-dom'
 export default function Product() {
+
+  const navigate=useNavigate()
   const { data: apiData, loading } = useFetch('/data.json')
   const [localData, setLocalData] = useState([])
 
@@ -12,27 +14,34 @@ export default function Product() {
     }
   }, [])
 
+  function handlebtn(){
+    navigate('/addrecipes')
+  }
+
   const combinedData = [...(localData || []), ...(apiData || [])]
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gray-900 dark:bg-gray-100">
+      <div className="flex items-center justify-center h-screen bg-neutral-700 dark:bg-gray-100">
         <p className="text-lg font-semibold text-blue-600">Loading...</p>
       </div>
     )
   }
 
   return (
-    <div className="bg-gray-900 dark:bg-gray-100 max-w-7xl mx-auto px-4 py-10">
+    <div className="bg-neutral-700 dark:bg-gray-100 max-w-7xl mx-auto px-4 py-10">
       <h2 className="text-3xl font-bold text-white dark:text-black mb-8 text-center">
         Recipe Lists
-      </h2>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {combinedData?.map((item, index) => (
+        </h2>
+         <span className='flex flex-col justify-end items-end mb-2'>
+           <button onClick={()=>handlebtn()} className='px-2 py-1 bg-red-500 rounded text-white'>+ Add Recipes</button>
+         </span>
+        
+      <div className='flex flex-row flex-wrap  gap-4  '>
+          {combinedData?.map((item, index) => (
           <div
             key={item.id || index}
-            className="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden border border-gray-200"
+            className="bg-white flex flex-col rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden border border-gray-200 w-70"
           >
             <img
               src={item.img || '/images/default.jpg'}
@@ -51,6 +60,6 @@ export default function Product() {
           </div>
         ))}
       </div>
-    </div>
+      </div>
   )
 }
