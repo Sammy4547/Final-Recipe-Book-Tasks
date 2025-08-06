@@ -8,9 +8,8 @@ export default function Navbar() {
 
             <h1 className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 ">Recipe Books</h1>
             <nav className=" md:flex gap-8 items-center text-sm font-medium text-blue-400">
-                <Link className='font-bold text-xl hover:text-blue-600' to="/">Home</Link>
-                <Link className='font-bold text-xl hover:text-blue-600' to="/recipes">Recipes</Link>
-                <Link className='font-bold text-xl hover:text-blue-600' to="/addrecipes">Add new Recipes</Link>
+                <Link className='font-bold  hover:text-blue-600' to="/recipes">Recipes</Link>
+                <Link className='font-bold  hover:text-blue-600' to="/addrecipes">Add new Recipes</Link>
 
             </nav>
         </div>

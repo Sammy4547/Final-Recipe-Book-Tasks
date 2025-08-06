@@ -15,10 +15,9 @@ export default function Step4ImageUpload({ onPrev, onNext, initialValues }) {
     enableReinitialize: true,
     validationSchema: Step4Schema,
     onSubmit: (values) => {
-      onNext(values);
-      dispatch(savedRecipe());
+      onNext(values)
       dispatch(resetRecipe());
-      navigate("/");
+      navigate("/recipes");
     },
   });
 

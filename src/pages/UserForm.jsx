@@ -35,7 +35,7 @@ export default function Product() {
             className="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden border border-gray-200"
           >
             <img
-              src={item.image || '/images/default.jpg'}
+              src={item.img || '/images/default.jpg'}
               alt={item.recipes}
               className="w-full h-48 object-cover"
             />

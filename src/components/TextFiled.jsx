@@ -1,30 +1,45 @@
-import React from "react";
-
 export default function TextField({
   label,
   name,
-  type = "text",
   value,
   onChange,
   onBlur,
-  placeholder = "",
-  error = "",
-  touched = false,
-  textarea = false,
-  ...rest
+  placeholder,
+  error,
+  touched,
+  type = "text", // text, select, textarea
+  options = [],  // only for select
 }) {
-  const baseStyle = `w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-    error && touched ? "border-red-500" : "border-gray-300"
-  }`;
-
   return (
     <div className="mb-4">
-      {label && (
-        <label htmlFor={name} className="block mb-1 text-gray-700 font-medium">
-          {label}
-        </label>
-      )}
-      {textarea ? (
+      <label
+        htmlFor={name}
+        className="block text-sm font-medium text-gray-700 mb-1"
+      >
+        {label}
+      </label>
+
+      {type === "select" ? (
+        <select
+          id={name}
+          name={name}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          className={`w-full border rounded-md px-3 py-2 shadow-sm focus:outline-none focus:ring-2 ${
+            error && touched
+              ? "border-red-500 focus:ring-red-300"
+              : "border-gray-300 focus:ring-indigo-300"
+          }`}
+        >
+          <option value="">-- Select --</option>
+          {options.map((opt) => (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+      ) : type === "textarea" ? (
         <textarea
           id={name}
           name={name}
@@ -32,23 +47,29 @@ export default function TextField({
           onChange={onChange}
           onBlur={onBlur}
           placeholder={placeholder}
-          rows="3"
-          className={`${baseStyle} resize-none`}
-          {...rest}
+          rows={4}
+          className={`w-full border rounded-md px-3 py-2 shadow-sm focus:outline-none focus:ring-2 ${
+            error && touched
+              ? "border-red-500 focus:ring-red-300"
+              : "border-gray-300 focus:ring-indigo-300"
+          }`}
         />
       ) : (
         <input
           id={name}
           name={name}
-          type={type}
           value={value}
           onChange={onChange}
           onBlur={onBlur}
           placeholder={placeholder}
-          className={baseStyle}
-          {...rest}
+          className={`w-full border rounded-md px-3 py-2 shadow-sm focus:outline-none focus:ring-2 ${
+            error && touched
+              ? "border-red-500 focus:ring-red-300"
+              : "border-gray-300 focus:ring-indigo-300"
+          }`}
         />
       )}
+
       {error && touched && (
         <p className="text-red-500 text-sm mt-1">{error}</p>
       )}

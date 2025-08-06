@@ -39,13 +39,15 @@ export default function Step1RecipeDetails({ onNext, initialValues }) {
         />
 
         <TextField
-          label="Cuisine"
+          label="Cusines"
           name="cusines"
           value={values.cusines}
           onChange={handleChange}
           onBlur={handleBlur}
-          placeholder="Enter a cuisine"
+          placeholder="Enter a recipe"
           error={errors.cusines}
+          type="select"
+          options={["Indian", "Thai", "Chinese","American","Mexican"]}
           touched={touched.cusines}
         />
 

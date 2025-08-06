@@ -10,13 +10,14 @@ const initialState = {
     indgridents: [],
   },
   step3: {
-    cookingstep: null,
+    cookingstep:null,
   },
   step4: {
     img: "",
   },
   currentStep: 1,
   finalRecipe: null,
+  allrecipesStored:[]
 };
 
 export const recipeSlice = createSlice({
@@ -47,6 +48,7 @@ export const recipeSlice = createSlice({
         ...state.step2,
         ...state.step3,
         ...state.step4,
+        id:Date.now()
       };
     },
     resetRecipe: (state) => {
@@ -68,5 +70,6 @@ export const {
   goToPrevStep,
   savedRecipe,
   resetRecipe,
+  allrecipesStored
 } = recipeSlice.actions;
 export default recipeSlice.reducer;
