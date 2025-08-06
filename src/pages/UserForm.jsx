@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import useFetch from '../lib/usefetch'
 
-export default function Product() {
+export default function UserForm() {
   const { data: apiData, loading } = useFetch('/data.json')
   const [localData, setLocalData] = useState([])
 

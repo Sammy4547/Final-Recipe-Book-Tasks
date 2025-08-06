@@ -6,9 +6,9 @@ export default function Product() {
   const [localData, setLocalData] = useState([])
 
   useEffect(() => {
-    const savedRecipes = localStorage.getItem('recipes')
+    const savedRecipes = localStorage.getItem('finalRecipe')
     if (savedRecipes) {
-      setLocalData(JSON.parse(savedRecipes))
+      setLocalData([JSON.parse(savedRecipes)])
     }
   }, [])
 
@@ -16,16 +16,16 @@ export default function Product() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center h-screen bg-gray-900 dark:bg-gray-100">
         <p className="text-lg font-semibold text-blue-600">Loading...</p>
       </div>
     )
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold text-indigo-600 mb-8 text-center">
-        Recipe Posts
+    <div className="bg-gray-900 dark:bg-gray-100 max-w-7xl mx-auto px-4 py-10">
+      <h2 className="text-3xl font-bold text-white dark:text-black mb-8 text-center">
+        Recipe Lists
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -35,15 +35,18 @@ export default function Product() {
             className="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden border border-gray-200"
           >
             <img
-              src={item.image || '/images/default.jpg'}
+              src={item.img || '/images/default.jpg'}
               alt={item.recipes}
               className="w-full h-48 object-cover"
             />
             <div className="p-5">
               <h4 className="text-xl font-semibold text-gray-800 mb-2">
-                {item.title}
+                {item.recipes}
               </h4>
-              <p className="text-gray-600 text-sm">{item.description}</p>
+              <div className='flex flex-row gap-2'>
+                 <p className="text-white text-sm bg-red-500 w-25 p-1 flex items-center justify-center rounded ">{item.cusines}</p>
+              </div>
+              <p className="text-gray-600 text-sm mt-2">{item.description}</p>
             </div>
           </div>
         ))}
