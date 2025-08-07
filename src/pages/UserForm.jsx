@@ -29,10 +29,10 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className=" bg-neutral-700 dark:bg-gray-100  flex justify-center items-center min-h-screen ">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg"
+        className=" w-full max-w-md bg-white p-8 rounded-lg shadow-lg"
       >
         <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
           Registration Form

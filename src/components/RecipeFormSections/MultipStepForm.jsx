@@ -22,17 +22,17 @@ export default function MultiStepForm() {
   const step4Data = useSelector((state) => state.recipesForm.step4);
   const recipeComplete = useSelector((state) => state.recipesForm.finalRecipe);
 
-  const [finalRecipes, setFinalRecipes] = useLocalStorage("finalRecipe", []);
+  const [finalRecipe, setFinalRecipes] = useLocalStorage("finalRecipe", []);
 
  useEffect(() => {
   if (recipeComplete && Object.keys(recipeComplete).length > 0) {
-    const exists = finalRecipes.some(
+    const exists = finalRecipe.some(
       (r) => r.recipes === recipeComplete.recipes
     );
 
     if (!exists) {
       setFinalRecipes([
-        ...finalRecipes,
+        ...finalRecipe,
         { ...recipeComplete, id: nanoid() },
       ]);
     }

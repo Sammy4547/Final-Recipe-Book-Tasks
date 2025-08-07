@@ -52,8 +52,11 @@ export default function Recipes() {
                   <p className="text-white text-sm bg-red-500 w-25 p-1 flex items-center justify-center rounded">
                     {item.cusines}
                   </p>
-                   <p className="text-white text-sm bg-red-500 w-25 p-1 flex items-center justify-center rounded">
-                    {item.meal}
+                   <p className="text-white text-sm bg-yellow-500 w-25 p-1 flex items-center justify-center rounded">
+                    {item.user?.meal ||item.meal}
+                  </p>
+                   <p className="text-white text-sm bg-green-500 w-25 p-1 flex items-center justify-center rounded">
+                    {item.user?.diet ||item.diet}
                   </p>
                 </div>
                 <p className="text-gray-600 text-sm mt-2">{item.description}</p>

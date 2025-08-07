@@ -6,7 +6,7 @@
     "cusines": "Italian",
     "difficulty": "Easy",
     "meal": "Dinner",
-    "dietaryPreference": "Vegetarian",
+    "diet": "Vegetarian",
     "ingredients": [
       { "name": "Spaghetti", "quantity": "200g" },
       { "name": "Garlic", "quantity": "4 cloves" },
@@ -30,7 +30,7 @@
     "cusines": "Chinese",
     "difficulty": "Medium",
     "meal": "Lunch",
-    "dietaryPreference": "Vegan",
+    "diet": "Vegan",
     "ingredients": [
       { "name": "Cooked Rice", "quantity": "2 cups" },
       { "name": "Carrots", "quantity": "1/2 cup (diced)" },
@@ -54,7 +54,7 @@
     "cusines": "Mediterranean",
     "difficulty": "Easy",
     "meal": "Snack",
-    "dietaryPreference": "Vegan",
+    "diet": "Vegan",
     "ingredients": [
       { "name": "Chickpeas", "quantity": "1 cup (boiled)" },
       { "name": "Cucumber", "quantity": "1/2 cup (diced)" },
@@ -77,7 +77,7 @@
     "cusines": "Indian",
     "difficulty": "Hard",
     "meal": "Dinner",
-    "dietaryPreference": "Vegetarian",
+    "diet": "Vegetarian",
     "ingredients": [
       { "name": "Paneer", "quantity": "200g" },
       { "name": "Butter", "quantity": "2 tbsp" },
@@ -101,7 +101,7 @@
     "cusines": "American",
     "difficulty": "Easy",
     "meal": "Breakfast",
-    "dietaryPreference": "Vegetarian",
+    "diet": "Vegetarian",
     "ingredients": [
       { "name": "Banana", "quantity": "1 (mashed)" },
       { "name": "Flour", "quantity": "1 cup" },
