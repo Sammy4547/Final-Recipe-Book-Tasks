@@ -15,7 +15,9 @@ export const Step2Schema = Yup.object().shape({
         quantity: Yup.string().required("Quantity is required"),
       })
     )
-    .min(1, "At least one ingredient is required")
+    .min(1, "At least one ingredient is required"),
+    agree: Yup.boolean().oneOf([true], "You must accept the terms"),
+
 });
 
 
@@ -27,7 +29,20 @@ export const Step3Schema = Yup.object().shape({
 export const Step4Schema=Yup.object().shape({
     img:Yup.string().required("image is required"),
   
+}) 
+
+export const UserFormValidation=Yup.object().shape({
+  fullName:Yup.string().required("Name is Required"),
+  email:Yup.string()
+  .email("Invalid email format")
+  .required("Email is required"),
+  meal:Yup.string().required("Meal is Required"),
+  diet:Yup.string().required("Diet is Required"),
+  agree: Yup.boolean().oneOf([true], "You must accept the terms"),
+
 })
 
+
+ 
 
 

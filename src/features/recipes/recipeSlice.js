@@ -11,14 +11,15 @@ const initialState = {
     indgridents: [],
   },
   step3: {
-    cookingstep:null,
+    cookingstep: null,
   },
   step4: {
     img: "",
   },
   currentStep: 1,
   finalRecipe: null,
-  allrecipesStored:[]
+  allrecipesStored: [],
+  user:null
 };
 
 export const recipeSlice = createSlice({
@@ -43,15 +44,38 @@ export const recipeSlice = createSlice({
     goToPrevStep: (state) => {
       if (state.currentStep > 1) state.currentStep -= 1;
     },
-    savedRecipe: (state) => {
+  
+    savedRecipe: (state, action) => {
+      const user = action.payload;
       state.finalRecipe = {
+        user,
         ...state.step1,
         ...state.step2,
         ...state.step3,
         ...state.step4,
-        id:nanoid()
+        id: nanoid(),
       };
     },
+    setUser: (state, action) => {
+  state.user = action.payload;
+},
+    saveFinalRecipeWithUser: (state) => {
+      const completeRecipe = {
+        id: nanoid(),
+        user: state.user, 
+        ...state.step1,
+        ...state.step2,
+        ...state.step3,
+        ...state.step4,
+        img: state.step4.img || "/images/default.jpg",
+      };
+
+      state.finalRecipe = completeRecipe;
+      state.allrecipesStored.push(completeRecipe);
+      localStorage.setItem("finalRecipes", JSON.stringify(state.allrecipesStored));
+    },
+  
+
     resetRecipe: (state) => {
       state.step1 = { recipes: "", cusines: "", description: "" };
       state.step2 = { indgridents: [] };
@@ -71,6 +95,7 @@ export const {
   goToPrevStep,
   savedRecipe,
   resetRecipe,
-  allrecipesStored
+  allrecipesStored,
+  saveFinalRecipeWithUser,setUser
 } = recipeSlice.actions;
 export default recipeSlice.reducer;

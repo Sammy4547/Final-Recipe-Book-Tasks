@@ -4,6 +4,7 @@ import AppLayouts from '../layouts/AppLayouts'
 import UserForm from '../pages/UserForm'
 import Recipes from '../pages/Recipes'
 import RecipeForm from '../pages/RecipeForm'
+import RecipeList from '../pages/RecipeList'
 
 export default function AppRoutes() {
     const router=createBrowserRouter([
@@ -17,7 +18,12 @@ export default function AppRoutes() {
             },
             {
                 path:'recipes',
-                element:<Recipes/>
+                element:<Recipes/>,
+              
+            },
+            {
+                path:'recipes/:id',
+                element:<RecipeList/>
             },
             {
                 path:'addrecipes',

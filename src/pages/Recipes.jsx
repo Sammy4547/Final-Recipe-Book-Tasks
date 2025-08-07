@@ -1,23 +1,16 @@
 import React from 'react'
 import useFetch from '../lib/usefetch'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useLocalStorage from '../lib/useLoacalStorage'
 
 export default function Recipes() {
   const navigate = useNavigate()
   const { data: apiData, loading } = useFetch('/data.json')
-  const [localData, setLocalData] = useLocalStorage("finalRecipe", []);
+  const [localData] = useLocalStorage('finalRecipe', [])
 
-  console.log("Locla",localData);
-  
-  function handlebtn() {
-    navigate('/addrecipes')
-  }
-
-const safeLocalData = Array.isArray(localData) ? localData : [];
-const safeApiData = Array.isArray(apiData) ? apiData : [];
-const combinedData = [...safeApiData, ...safeLocalData];
-console.log("localData:", localData);
+  const safeLocalData = Array.isArray(localData) ? localData : []
+  const safeApiData = Array.isArray(apiData) ? apiData : []
+  const combinedData = [...safeApiData, ...safeLocalData]
 
   if (loading) {
     return (
@@ -32,35 +25,44 @@ console.log("localData:", localData);
       <h2 className="text-3xl font-bold text-white dark:text-black mb-8 text-center">
         Recipe Lists
       </h2>
-      <span className='flex flex-col justify-end items-end mb-2'>
-        <button onClick={handlebtn} className='px-2 py-1 bg-red-500 rounded text-white'>+ Add Recipes</button>
+
+      <span className="flex flex-col justify-end items-end mb-2">
+        <button
+          onClick={() => navigate('/addrecipes')}
+          className="px-2 py-1 bg-red-500 rounded text-white"
+        >
+          + Add Recipes
+        </button>
       </span>
 
-      <div className='flex flex-row flex-wrap gap-4'>
+      <div className="flex flex-row flex-wrap gap-4">
         {combinedData.map((item, index) => (
-          <div
-            key={item.id || index}
-            className="bg-white flex flex-col rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden border border-gray-200 w-70"
-          >
-            <img
-              src={item.img || '/images/default.jpg'}
-              alt={item.recipes}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-5">
-              <h4 className="text-xl font-semibold text-gray-800 mb-2">
-                {item.recipes}
-              </h4>
-              <div className='flex flex-row gap-2'>
-                <p className="text-white text-sm bg-red-500 w-25 p-1 flex items-center justify-center rounded">
-                  {item.cusines}
-                </p>
+          <Link to={`/recipes/${item.id || index}`} key={item.id || index}>
+            <div className="bg-white flex flex-col rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden border border-gray-200 w-70">
+              <img
+                src={item.img || '/images/default.jpg'}
+                alt={item.recipes}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-5">
+                <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                  {item.recipes}
+                </h4>
+                <div className="flex flex-row gap-2">
+                  <p className="text-white text-sm bg-red-500 w-25 p-1 flex items-center justify-center rounded">
+                    {item.cusines}
+                  </p>
+                   <p className="text-white text-sm bg-red-500 w-25 p-1 flex items-center justify-center rounded">
+                    {item.meal}
+                  </p>
+                </div>
+                <p className="text-gray-600 text-sm mt-2">{item.description}</p>
               </div>
-              <p className="text-gray-600 text-sm mt-2">{item.description}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
+
     </div>
   )
 }

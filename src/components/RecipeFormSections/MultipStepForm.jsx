@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   goToNextStep, goToPrevStep, updateStep1,
-  updateStep2, updateStep3, updateStep4, savedRecipe,
+  updateStep2, updateStep3, updateStep4, saveFinalRecipeWithUser,
 } from "../../features/recipes/recipeSlice";
 import Step1RecipeDetails from "./Step1RecipeDetails";
 import Step2Ingredients from "./Step2Indegridents";
@@ -83,7 +83,8 @@ export default function MultiStepForm() {
             onPrev={handlePrev}
             onNext={(data) => {
               dispatch(updateStep4(data));
-              dispatch(savedRecipe());
+              dispatch(saveFinalRecipeWithUser())
+
             }}
           />
         );

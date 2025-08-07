@@ -7,10 +7,10 @@ export default function useFetch(url) {
     setLoading(true);
     const res = await fetch(url);
     const result = await res.json();
-    setTimeout(() => {
+    
       setData(result);
       setLoading(false);
-    }, 3000);
+
   }
   useEffect(() => {
     fetchdata();
