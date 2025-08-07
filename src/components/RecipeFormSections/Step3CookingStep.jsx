@@ -38,7 +38,12 @@ export default function Step3CookingStep({ onNext, onPrev, initialValues }) {
           textarea
         />
 
-          <Button className="mr-10" onClick={onPrev} type="button" variant="secondary">
+        <Button
+          className="mr-10"
+          onClick={onPrev}
+          type="button"
+          variant="secondary"
+        >
           Back
         </Button>
 

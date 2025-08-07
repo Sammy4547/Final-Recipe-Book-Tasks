@@ -10,14 +10,14 @@ export default function RecipeList() {
   const { data: apiData } = useFetch("/data.json");
   const [localData] = useLocalStorage("finalRecipe", []);
 
+  // checking both api and local dta is array
   const safeApiData = Array.isArray(apiData) ? apiData : [];
   const safeLocalData = Array.isArray(localData) ? localData : [];
 
   const combinedData = [...safeApiData, ...safeLocalData];
 
-  const selectedRecipe = combinedData.find(
-    (item, index) => String(item.id || index) === id
-  );
+const selectedRecipe = combinedData.find((item) => String(item.id) === id);
+
 
   if (!selectedRecipe) {
     return (
@@ -31,7 +31,8 @@ export default function RecipeList() {
     <div className="max-w-4xl mx-auto px-6 py-10">
       <button
         onClick={() => navigate("/recipes")}
-        className="mb-6 bg-blue-700 p-2 text-white inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+       className="mb-6 bg-blue-700 p-2 text-white inline-flex items-center hover:text-blue-200 font-medium"
+
       >
         ← Back to Recipes
       </button>
@@ -46,12 +47,20 @@ export default function RecipeList() {
         </div>
 
         <div className="flex flex-col mt-10 ">
-          <h2 className="dark:text-black text-white font-bold text-2xl ml-8 mb-2">{selectedRecipe.recipes}</h2>
-           
+          <h2 className="dark:text-black text-white font-bold text-2xl ml-8 mb-2">
+            {selectedRecipe.recipes}
+          </h2>
+
           <div className="ml-10">
-            <h3 className="dark:text-gray-700 text-white ">{selectedRecipe.description}</h3>
-          <p className="text-md text-blue-600">{selectedRecipe.user?.diet||selectedRecipe.diet}</p>
-          <p className="dark:text-gray-700 text-white mt-4">Steps:-{selectedRecipe.cookingstep||selectedRecipe.steps}</p>
+            <h3 className="dark:text-gray-700 text-white ">
+              {selectedRecipe.description}
+            </h3>
+            <p className="text-md text-blue-600">
+              {selectedRecipe.user?.diet || selectedRecipe.diet}
+            </p>
+            <p className="dark:text-gray-700 text-white mt-4">
+              Steps:-{selectedRecipe.cookingstep || selectedRecipe.steps}
+            </p>
           </div>
         </div>
       </div>

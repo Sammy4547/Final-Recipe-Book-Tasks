@@ -48,7 +48,7 @@ export default function Step1RecipeDetails({ onNext, initialValues }) {
           placeholder="Enter a recipe"
           error={errors.cusines}
           type="select"
-          options={["Indian", "Thai", "Chinese","American","Mexican"]}
+          options={["Indian", "Thai", "Chinese", "American", "Mexican"]}
           touched={touched.cusines}
         />
 
@@ -64,8 +64,12 @@ export default function Step1RecipeDetails({ onNext, initialValues }) {
           textarea
         />
 
-       
-        <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300 mt-4">Next</Button>
+        <Button
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300 mt-4"
+        >
+          Next
+        </Button>
       </form>
     </div>
   );

@@ -19,7 +19,7 @@ const initialState = {
   currentStep: 1,
   finalRecipe: null,
   allrecipesStored: [],
-  user:null
+  user: null,
 };
 
 export const recipeSlice = createSlice({
@@ -44,7 +44,7 @@ export const recipeSlice = createSlice({
     goToPrevStep: (state) => {
       if (state.currentStep > 1) state.currentStep -= 1;
     },
-  
+
     savedRecipe: (state, action) => {
       const user = action.payload;
       state.finalRecipe = {
@@ -57,12 +57,12 @@ export const recipeSlice = createSlice({
       };
     },
     setUser: (state, action) => {
-  state.user = action.payload;
-},
+      state.user = action.payload;
+    },
     saveFinalRecipeWithUser: (state) => {
       const completeRecipe = {
         id: nanoid(),
-        user: state.user, 
+        user: state.user,
         ...state.step1,
         ...state.step2,
         ...state.step3,
@@ -72,9 +72,11 @@ export const recipeSlice = createSlice({
 
       state.finalRecipe = completeRecipe;
       state.allrecipesStored.push(completeRecipe);
-      localStorage.setItem("finalRecipes", JSON.stringify(state.allrecipesStored));
+      localStorage.setItem(
+        "finalRecipes",
+        JSON.stringify(state.allrecipesStored)
+      );
     },
-  
 
     resetRecipe: (state) => {
       state.step1 = { recipes: "", cusines: "", description: "" };
@@ -96,6 +98,7 @@ export const {
   savedRecipe,
   resetRecipe,
   allrecipesStored,
-  saveFinalRecipeWithUser,setUser
+  saveFinalRecipeWithUser,
+  setUser,
 } = recipeSlice.actions;
 export default recipeSlice.reducer;

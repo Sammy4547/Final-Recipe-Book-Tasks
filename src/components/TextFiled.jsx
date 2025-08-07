@@ -7,8 +7,8 @@ export default function TextField({
   placeholder,
   error,
   touched,
-  type = "text", // text, select, textarea
-  options = [],  // only for select
+  type = "text", 
+  options = [], 
 }) {
   return (
     <div className="mb-4">
@@ -70,9 +70,7 @@ export default function TextField({
         />
       )}
 
-      {error && touched && (
-        <p className="text-red-500 text-sm mt-1">{error}</p>
-      )}
+      {error && touched && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>
   );
 }

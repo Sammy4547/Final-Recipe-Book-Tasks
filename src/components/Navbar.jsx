@@ -16,8 +16,8 @@ export default function Navbar() {
           <Link className="font-bold  hover:text-blue-600" to="/recipes">
             Recipes
           </Link>
-          
-          <ThemeToggle/>
+
+          <ThemeToggle />
         </nav>
       </div>
     </header>

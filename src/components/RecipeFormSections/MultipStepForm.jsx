@@ -1,8 +1,13 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  goToNextStep, goToPrevStep, updateStep1,
-  updateStep2, updateStep3, updateStep4, saveFinalRecipeWithUser,
+  goToNextStep,
+  goToPrevStep,
+  updateStep1,
+  updateStep2,
+  updateStep3,
+  updateStep4,
+  saveFinalRecipeWithUser,
 } from "../../features/recipes/recipeSlice";
 import Step1RecipeDetails from "./Step1RecipeDetails";
 import Step2Ingredients from "./Step2Indegridents";
@@ -24,21 +29,17 @@ export default function MultiStepForm() {
 
   const [finalRecipe, setFinalRecipes] = useLocalStorage("finalRecipe", []);
 
- useEffect(() => {
-  if (recipeComplete && Object.keys(recipeComplete).length > 0) {
-    const exists = finalRecipe.some(
-      (r) => r.recipes === recipeComplete.recipes
-    );
+  useEffect(() => {
+    if (recipeComplete && Object.keys(recipeComplete).length > 0) {
+      const exists = finalRecipe.some(
+        (r) => r.recipes === recipeComplete.recipes
+      );
 
-    if (!exists) {
-      setFinalRecipes([
-        ...finalRecipe,
-        { ...recipeComplete, id: nanoid() },
-      ]);
+      if (!exists) {
+        setFinalRecipes([...finalRecipe, { ...recipeComplete, id: nanoid() }]);
+      }
     }
-  }
-}, [recipeComplete]);
-
+  }, [recipeComplete]);
 
   const handlePrev = () => dispatch(goToPrevStep());
 
@@ -83,8 +84,7 @@ export default function MultiStepForm() {
             onPrev={handlePrev}
             onNext={(data) => {
               dispatch(updateStep4(data));
-              dispatch(saveFinalRecipeWithUser())
-
+              dispatch(saveFinalRecipeWithUser());
             }}
           />
         );

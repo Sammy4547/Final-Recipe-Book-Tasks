@@ -16,7 +16,7 @@ export default function Step4ImageUpload({ onPrev, onNext, initialValues }) {
     enableReinitialize: true,
     validationSchema: Step4Schema,
     onSubmit: (values) => {
-      onNext(values)
+      onNext(values);
       dispatch(resetRecipe());
       navigate("/recipes");
     },
@@ -52,11 +52,12 @@ export default function Step4ImageUpload({ onPrev, onNext, initialValues }) {
           />
         )}
 
-        <Button >Upload</Button>
+        <Button>Upload</Button>
 
         <div className="flex justify-center space-x-4 mt-4">
-         
-          <Button type="button" variant="secondary" onClick={onPrev}>Back</Button>
+          <Button type="button" variant="secondary" onClick={onPrev}>
+            Back
+          </Button>
           <button
             type="submit"
             className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300"
