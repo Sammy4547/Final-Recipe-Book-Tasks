@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import { UserFormValidation } from "../validation/validationSchema";
 import { useDispatch } from "react-redux";
 import { setUser} from "../features/recipes/recipeSlice";
+import Button from "../components/Button";
 export default function Home() {
 
   const dispatch=useDispatch()
@@ -95,12 +96,8 @@ export default function Home() {
           <p className="text-red-500 text-sm mt-1">{errors.agree}</p>
         )}
         <div className="flex justify-center items-center mt-2">
-          <button
-            type="submit"
-            className="bg-blue-500 p-2 rounded hover:bg-blue-800 flex "
-          >
-            Submit
-          </button>
+         
+          <Button  type="submit">Submit</Button>
         </div>
       </form>
     </div>

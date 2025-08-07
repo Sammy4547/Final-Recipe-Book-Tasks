@@ -2,6 +2,7 @@ import React from "react";
 import TextField from "../TextFiled";
 import { useFormik } from "formik";
 import { Step3Schema } from "../../validation/validationSchema";
+import Button from "../Button";
 
 export default function Step3CookingStep({ onNext, onPrev, initialValues }) {
   const { handleBlur, handleChange, errors, handleSubmit, touched, values } =
@@ -37,19 +38,13 @@ export default function Step3CookingStep({ onNext, onPrev, initialValues }) {
           textarea
         />
 
-        <button
-          onClick={onPrev}
-          type="button"
-          className="  bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300 mt-4 space-x-3.5"
-        >
+          <Button className="mr-10" onClick={onPrev} type="button" variant="secondary">
           Back
-        </button>
-        <button
-          type="submit"
-          className=" bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300 mt-4"
-        >
+        </Button>
+
+        <Button className="ml-50" type="submit" variant="primary">
           Next
-        </button>
+        </Button>
       </form>
     </div>
   );

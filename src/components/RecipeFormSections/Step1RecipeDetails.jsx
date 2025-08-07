@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import { Step1Schema } from "../../validation/validationSchema";
 import TextField from "../TextFiled";
+import Button from "../Button";
 
 export default function Step1RecipeDetails({ onNext, initialValues }) {
   const { handleBlur, handleChange, errors, handleSubmit, touched, values } =
@@ -63,12 +64,8 @@ export default function Step1RecipeDetails({ onNext, initialValues }) {
           textarea
         />
 
-        <button
-          type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300 mt-4"
-        >
-          Next
-        </button>
+       
+        <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300 mt-4">Next</Button>
       </form>
     </div>
   );

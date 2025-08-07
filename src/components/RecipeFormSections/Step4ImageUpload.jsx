@@ -2,8 +2,9 @@ import React from "react";
 import { useFormik } from "formik";
 import { Step4Schema } from "../../validation/validationSchema";
 import { useDispatch } from "react-redux";
-import { resetRecipe, savedRecipe } from "../../features/recipes/recipeSlice";
+import { resetRecipe } from "../../features/recipes/recipeSlice";
 import { useNavigate } from "react-router-dom";
+import Button from "../Button";
 export default function Step4ImageUpload({ onPrev, onNext, initialValues }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -51,18 +52,11 @@ export default function Step4ImageUpload({ onPrev, onNext, initialValues }) {
           />
         )}
 
-        <button className="bg-blue-500 p-2 rounded mt-4 hover:bg-blue-700">
-          Upload
-        </button>
+        <Button >Upload</Button>
 
         <div className="flex justify-center space-x-4 mt-4">
-          <button
-            onClick={onPrev}
-            type="button"
-            className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300"
-          >
-            Back
-          </button>
+         
+          <Button type="button" variant="secondary" onClick={onPrev}>Back</Button>
           <button
             type="submit"
             className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition duration-300"

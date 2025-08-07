@@ -28,15 +28,15 @@ export default function Stepper() {
                 className={`w-10 h-10 flex items-center justify-center rounded-full border-2 font-semibold text-sm transition-all duration-300
                   ${
                     isCompleted
-                      ? "bg-green-500 border-green-500 text-white"
+                      ? "bg-green-500 border-green-500 dark:text-black text-white"
                       : isActive
-                      ? "bg-blue-500 border-amber-500 text-white"
-                      : "bg-gray-400 border-gray-400 text-gray-600"
+                      ? "bg-blue-500 border-amber-500 dark:text-black text-white"
+                      : "bg-gray-400 border-gray-400 dark:text-black text-gray-700"
                   }`}
               >
                 {isCompleted ? "✓" : stepNumber}
               </div>
-              <span className="text-xs mt-2 text-gray-700">{label}</span>
+              <span className="text-xs mt-2 dark:text-black text-gray-200">{label}</span>
               {index !== steps.length - 1 && (
                 <div className="w-full h-0.5 bg-gray-300 mt-2" />
               )}
