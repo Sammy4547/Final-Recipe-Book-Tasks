@@ -1,4 +1,4 @@
-# 🧾 Recipe Books
+#  Recipe Books
 
 A modern **Recipe Book Web App** where users can add, view, and manage recipes through a **multi-step form**.  
 Built with **React 19**, styled using **Tailwind CSS**, powered by **Redux Toolkit** for state management, and fully validated using **Formik + Yup**.  
@@ -33,7 +33,7 @@ Supports **persistent storage** via `localStorage` and includes **unit tests** w
 
 ##  Features & Implementation
 
-### 🛠 Reusable Components
+###  Reusable Components
 - Built **TextField** & **Button** components for consistency and reusability.
 
 ###  Styling
