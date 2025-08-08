@@ -6,12 +6,12 @@ Supports **persistent storage** via `localStorage` and includes **unit tests** w
 
 ---
 
-## 📸 Demo
+##  Demo
 ![Recipe Books Demo](<Recording 2025-08-08 160724.gif>)
 
 ---
 
-## 🖼 Project Prototype
+## Project Prototype
 
 ![Prototype Screenshot 1](<Screenshot 2025-08-08 162237.png>)
 ![Prototype Screenshot 2](<Screenshot 2025-08-08 162251.png>)
@@ -20,44 +20,44 @@ Supports **persistent storage** via `localStorage` and includes **unit tests** w
 
 ---
 
-## 📖 Overview
+##  Overview
 
 **Recipe Books** is an interactive web application that allows users to:
-- ➕ Add new recipes via a multi-step form.
-- 📜 View and manage their recipes.
-- 🌓 Toggle between dark and light mode.
-- 💾 Store recipes persistently even after page reload.
-- 📱 Enjoy a clean and responsive UI.
+-  Add new recipes via a multi-step form.
+-  View and manage their recipes.
+-  Toggle between dark and light mode.
+-  Store recipes persistently even after page reload.
+-  Enjoy a clean and responsive UI.
 
 ---
 
-## 📂 Features & Implementation
+##  Features & Implementation
 
 ### 🛠 Reusable Components
 - Built **TextField** & **Button** components for consistency and reusability.
 
-### 🎨 Styling
+###  Styling
 - **Tailwind CSS** for modern, responsive, and utility-first styling.
 
-### 🔄 State & Data Handling
+###  State & Data Handling
 - **Redux Toolkit** to manage and persist global state.
 - **Formik** for efficient form handling.
 - **Yup** for form validation rules.
 - **useFetch** custom hook to fetch data.
 - **useLocalStorage** custom hook to store data persistently in the browser.
 
-### 🗺 Navigation
+###  Navigation
 - **React Router v6.6** for seamless client-side routing.
 
-### 🌗 Theming
+###  Theming
 - **Context API** for Dark/Light mode toggle.
 
-### 🧪 Testing
+###  Testing
 - **Vitest** for unit testing and maintaining code reliability.
 
 ---
 
-## 🚀 Tech Stack
+##  Tech Stack
 
 | Technology         | Purpose                                         |
 |--------------------|-------------------------------------------------|
@@ -72,23 +72,23 @@ Supports **persistent storage** via `localStorage` and includes **unit tests** w
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
-- 🧾 **Multi-step recipe form** for structured data input  
-- 👤 **User details integration**  
-- 🍱 **Cuisine, diet & meal preferences**  
-- 💾 **Persistent state** via `localStorage`  
-- 🔄 **Redux-powered global state**  
-- 🧪 **Unit tests** using Vitest  
-- 🧭 **Routing** with React Router  
-- 💅 **Responsive design** with Tailwind CSS  
-- 🌗 **Dark/Light mode** using Context API  
-- ♻ **Reusable UI components** (Button, TextField, etc.)  
-- 🪝 **Custom hooks** for localStorage & API fetching  
+-  **Multi-step recipe form** for structured data input  
+-  **User details integration**  
+-  **Cuisine, diet & meal preferences**  
+-  **Persistent state** via `localStorage`  
+-  **Redux-powered global state**  
+-  **Unit tests** using Vitest  
+-  **Routing** with React Router  
+-  **Responsive design** with Tailwind CSS  
+-  **Dark/Light mode** using Context API  
+-  **Reusable UI components** (Button, TextField, etc.)  
+-  **Custom hooks** for localStorage & API fetching  
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```bash
 recipe-books/
