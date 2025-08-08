@@ -94,9 +94,9 @@ export default function MultiStepForm() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <div className="max-w-3xl mx-auto p-6 h">
       <Stepper />
-      <div className="bg-white shadow-xl rounded-2xl p-6 border border-gray-100 transition-all">
+      <div className="bg-gray-100 dark:bg-neutral-700    transition-all">
         {renderStep()}
       </div>
     </div>

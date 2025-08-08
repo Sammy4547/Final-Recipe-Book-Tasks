@@ -14,7 +14,7 @@ export default function TextField({
     <div className="mb-4">
       <label
         htmlFor={name}
-        className="block text-sm font-medium text-gray-700 mb-1"
+        className="block text-sm font-medium dark:text-white text-gray-700 mb-1"
       >
         {label}
       </label>
@@ -32,9 +32,9 @@ export default function TextField({
               : "border-gray-300 focus:ring-indigo-300"
           }`}
         >
-          <option value="">-- Select --</option>
+          <option className="dark:text-white text-black dark:bg-gray-900 bg-gray-200" value="">-- Select --</option>
           {options.map((opt) => (
-            <option key={opt} value={opt}>
+            <option className="dark:text-white text-black dark:bg-gray-900 bg-gray-100" key={opt} value={opt}>
               {opt}
             </option>
           ))}

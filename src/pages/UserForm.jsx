@@ -1,15 +1,13 @@
 import React from "react";
-import TextField from "../components/TextFiled";
+import TextField from "../components/Reusable/TextFiled";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { UserFormValidation } from "../validation/validationSchema";
 import { useDispatch } from "react-redux";
-import { setUser} from "../features/recipes/recipeSlice";
-import Button from "../components/Button";
+import { setUser } from "../features/recipes/recipeSlice";
+import Button from "../components/Reusable/Button";
 export default function Home() {
-
-  const dispatch=useDispatch()
-
+  const dispatch = useDispatch();
 
   const { handleChange, handleSubmit, errors, touched, values, handleBlur } =
     useFormik({
@@ -22,20 +20,19 @@ export default function Home() {
       },
       validationSchema: UserFormValidation,
       onSubmit: (values) => {
-         dispatch(setUser(values))
-         dispatch(navigate('/recipes'))
-}
-
+        dispatch(setUser(values));
+        dispatch(navigate("/recipes"));
+      },
     });
   const navigate = useNavigate();
 
   return (
-    <div className=" bg-neutral-700 dark:bg-gray-100  flex justify-center items-center min-h-screen ">
+    <div className=" dark:bg-neutral-700 bg-gray-100  flex justify-center items-center min-h-screen ">
       <form
         onSubmit={handleSubmit}
-        className=" w-full max-w-md bg-white p-8 rounded-lg shadow-lg"
+        className=" w-full max-w-md dark:bg-neutral-800 dark:text-white bg-white p-8 rounded-lg shadow-lg"
       >
-        <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
+        <h2 className="text-2xl font-semibold mb-6 text-center dark:text-white text-gray-800">
           Registration Form
         </h2>
 
@@ -89,15 +86,14 @@ export default function Home() {
           name="agree"
           type="checkbox"
         />
-        <label htmlFor="agree" className="p-2" >
+        <label htmlFor="agree" className="p-2">
           I agree the conditions
         </label>
         {errors.agree && touched.agree && (
           <p className="text-red-500 text-sm mt-1">{errors.agree}</p>
         )}
         <div className="flex justify-center items-center mt-2">
-         
-          <Button  type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </div>
       </form>
     </div>

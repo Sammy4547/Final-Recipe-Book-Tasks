@@ -14,15 +14,15 @@ export default function Recipes() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-neutral-700 dark:bg-gray-100">
+      <div className="flex items-center justify-center h-screen dark:bg-neutral-700 bg-gray-100">
         <p className="text-lg font-semibold text-blue-600">Loading...</p>
       </div>
     )
   }
 
   return (
-    <div className="bg-neutral-700 dark:bg-gray-100 max-w-7xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold text-white dark:text-black mb-8 text-center">
+    <div className="dark:bg-neutral-700 bg-gray-100 max-w-7xl mx-auto px-4 py-10">
+      <h2 className="text-3xl font-bold dark:text-white text-black mb-8 text-center">
         Recipe Lists
       </h2>
 

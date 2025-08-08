@@ -39,11 +39,14 @@ recipe-books/
 │
 ├── components/          # Reusable UI components (Button, TextField, etc.)
 ├── pages/               # Route pages (AddRecipes, Recipes, etc.)
-├── redux/               # Redux slices & store setup
+├── redux/               # Redux  & store setup
+├── features/            # Recipe Slices in which stored the state of 
 ├── hooks/               # Custom hooks
+|── context/ThemeContext # Context of handling dark and light Mode          
 ├── validation/          # Yup schemas for form validation
-├── lib/                 # Utility functions (e.g. localStorage helpers)
-├── tests/               # Vitest test files
+├── lib/                 # Utility functions (e.g. localStorage,fetching )
+├── routes               # Define all routes in the routes folder           
+├── tests/               # Vitest test files 
 ├── App.jsx              # Main app layout
 ├── main.jsx             # React entry point
 └── tailwind.config.js   # Tailwind CSS config

@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { Step1Schema } from "../../validation/validationSchema";
-import TextField from "../TextFiled";
-import Button from "../Button";
+import TextField from "../Reusable/TextFiled";
+import Button from "../Reusable/Button";
 
 export default function Step1RecipeDetails({ onNext, initialValues }) {
   const { handleBlur, handleChange, errors, handleSubmit, touched, values } =
@@ -19,50 +19,52 @@ export default function Step1RecipeDetails({ onNext, initialValues }) {
     });
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen dark:bg-neutral-700 dark:text-white bg-gray-100 text-black">
       <form
-        className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg"
+        className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg dark:bg-neutral-800 dark:text-white text-black "
         onSubmit={handleSubmit}
       >
-        <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">
+        <h2 className="text-2xl font-semibold mb-6 text-center dark:text-white text-gray-800">
           Recipe Details
         </h2>
 
-        <TextField
-          label="Recipe Name"
-          name="recipes"
-          value={values.recipes}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          placeholder="Enter a recipe"
-          error={errors.recipes}
-          touched={touched.recipes}
-        />
+        <div className="dark:text-white text-black">
+          <TextField
+            label="Recipe Name"
+            name="recipes"
+            value={values.recipes}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            placeholder="Enter a recipe"
+            error={errors.recipes}
+            touched={touched.recipes}
+          />
 
-        <TextField
-          label="Cusines"
-          name="cusines"
-          value={values.cusines}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          placeholder="Enter a recipe"
-          error={errors.cusines}
-          type="select"
-          options={["Indian", "Thai", "Chinese", "American", "Mexican"]}
-          touched={touched.cusines}
-        />
+          <TextField
+            label="Cusines"
+            name="cusines"
+            value={values.cusines}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            placeholder="Enter a recipe"
+            error={errors.cusines}
+            type="select"
+            options={["Indian", "Thai", "Chinese", "American", "Mexican"]}
+            touched={touched.cusines}
+          />
 
-        <TextField
-          label="Description"
-          name="description"
-          value={values.description}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          placeholder="Enter a short description"
-          error={errors.description}
-          touched={touched.description}
-          textarea
-        />
+          <TextField
+            label="Description"
+            name="description"
+            value={values.description}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            placeholder="Enter a short description"
+            error={errors.description}
+            touched={touched.description}
+            textarea
+          />
+        </div>
 
         <Button
           type="submit"

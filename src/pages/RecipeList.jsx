@@ -28,7 +28,7 @@ const selectedRecipe = combinedData.find((item) => String(item.id) === id);
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10">
+    <div className="max-w-4xl mx-auto px-6 py-10 h-screen">
       <button
         onClick={() => navigate("/recipes")}
        className="mb-6 bg-blue-700 p-2 text-white inline-flex items-center hover:text-blue-200 font-medium"
@@ -47,18 +47,18 @@ const selectedRecipe = combinedData.find((item) => String(item.id) === id);
         </div>
 
         <div className="flex flex-col mt-10 ">
-          <h2 className="dark:text-black text-white font-bold text-2xl ml-8 mb-2">
+          <h2 className="text-black dark:text-white font-bold text-2xl ml-8 mb-2">
             {selectedRecipe.recipes}
           </h2>
 
           <div className="ml-10">
-            <h3 className="dark:text-gray-700 text-white ">
+            <h3 className="text-gray-700 dark:text-white ">
               {selectedRecipe.description}
             </h3>
             <p className="text-md text-blue-600">
               {selectedRecipe.user?.diet || selectedRecipe.diet}
             </p>
-            <p className="dark:text-gray-700 text-white mt-4">
+            <p className="text-gray-700 dark:text-white mt-4">
               Steps:-{selectedRecipe.cookingstep || selectedRecipe.steps}
             </p>
           </div>
